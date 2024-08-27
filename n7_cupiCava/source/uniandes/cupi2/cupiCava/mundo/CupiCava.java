@@ -39,6 +39,7 @@ public class CupiCava
     public CupiCava( )
     {
         vinos = new ArrayList<Vino>( );
+        verificarInvariante();  // Línea añadida para verificar el invariante (m)
     }
 
     // -------------------------------------------------------------
@@ -234,9 +235,39 @@ public class CupiCava
      * <b>post:</b> La lista de vinos está ordenada por año de elaboración (orden descendente).
      */
     public void ordenarVinosPorAnhoElaboracion( )
+  {
+        for (int i = 0; i < vinos.size(); i++)
+        {
+            int maxIndex = i;
+            for (int j = i + 1; j < vinos.size(); j++)
+            {
+                if (vinos.get(j).darAnhoElaboracion() > vinos.get(maxIndex).darAnhoElaboracion())
+                {
+                    maxIndex = j;
+                }
+            }
+            Vino temp = vinos.get(i);
+            vinos.set(i, vinos.get(maxIndex));
+            vinos.set(maxIndex, temp);
+        }
+        verificarInvariante();  // Verifica el invariante después de ordenar
+    } 
+    
+    /**
+     * Verifica la validez de los invariantes de la clase. <br>
+     * <b>inv: </b> <br>
+     * La lista de vinos no puede ser nula. <br>
+     * La lista de vinos no puede contener elementos nulos.
+     */
+    private void verificarInvariante()
     {
-   	 // TODO Parte2 PuntoM: Implemente el método según la documentación dada.
-   }
+        assert vinos != null : "La lista de vinos no puede ser nula.";
+        for (Vino vino : vinos)
+        {
+            assert vino != null : "La lista de vinos no puede contener elementos nulos.";
+        }
+    }
+} // 238-270 (m)
 
     /**
      * Ordena ascendentemente la lista de vinos por lugar de origen usando el algoritmo de inserción. <br>
