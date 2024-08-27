@@ -231,7 +231,7 @@ public class Vino
      */
     public int compararPorNombre( Vino pVino )
     {
-    	 // TODO Parte2 PuntoA: Implemente el método según la documentación dada.
+    	 return nombre.compareToIgnoreCase(pVino.darNombre()); //(m)
     }
 
     /**
@@ -243,7 +243,7 @@ public class Vino
      */
     public int compararPorPresentacion( Vino pVino )
     {
-   	 // TODO Parte2 PuntoB: Implemente el método según la documentación dada.
+   	  return presentacion.compareToIgnoreCase(pVino.darPresentacion()); //(m)
    }
 
     /**
@@ -255,7 +255,7 @@ public class Vino
      */
     public int compararPorAnhoElaboracion( Vino pVino )
     {
-   	 // TODO Parte2 PuntoC: Implemente el método según la documentación dada.
+   	 return Integer.compare(anhoElaboracion, pVino.darAnhoElaboracion()); //(m)
    }
 
     /**
@@ -267,7 +267,7 @@ public class Vino
      */
     public int compararPorContenidoAzucar( Vino pVino )
     {
-   	 // TODO Parte2 PuntoD: Implemente el método según la documentación dada.
+   	 return Double.compare(contenidoAzucar, pVino.darContenidoAzucar()); // (m)
    }
 
     /**
@@ -279,7 +279,7 @@ public class Vino
      */
     public int compararPorTipo( Vino pVino )
     {
-   	 // TODO Parte2 PuntoE: Implemente el método según la documentación dada.
+   	 return tipo.compareToIgnoreCase(pVino.darTipo()); //(m)
    }
 
     /**
@@ -291,7 +291,7 @@ public class Vino
      */
     public int compararPorColor( Vino pVino )
     {
-   	 // TODO Parte2 PuntoF: Implemente el método según la documentación dada.
+   	 return color.compareToIgnoreCase(pVino.darColor()); // (m)
     }
 
     /**
@@ -303,7 +303,7 @@ public class Vino
      */
     public int compararPorLugarOrigen( Vino pVino )
     {
-   	 // TODO Parte2 PuntoG: Implemente el método según la documentación dada.
+   	return lugarOrigen.compareToIgnoreCase(pVino.darLugarOrigen()); // (m)
    }
 
     /**
@@ -316,8 +316,19 @@ public class Vino
     }
 
     // -----------------------------------------------------------------
-    // Invariante
+    // Invariante (m)
     // -----------------------------------------------------------------
 
-    // TODO Parte1 PuntoB: Documente e implemente el método verificarInvariante. Si lo desea puede crear métodos privados en esta parte.
+   
+    private void verificarInvariante()
+    {
+        assert nombre != null && !nombre.isEmpty() : "El nombre no puede ser nulo o vacío";
+        assert presentacion != null && (presentacion.equals(BOTELLA) || presentacion.equals(BARRIL)) : "La presentación debe ser BOTELLA o BARRIL";
+        assert anhoElaboracion > 0 : "El año de elaboración debe ser positivo";
+        assert contenidoAzucar >= 0 : "El contenido en azúcar no puede ser negativo";
+        assert tipo != null && (tipo.equals(SECO) || tipo.equals(ABOCADO) || tipo.equals(SEMI_SECO) || tipo.equals(SEMI_DULCE) || tipo.equals(DULCE)) : "El tipo debe ser uno de los valores válidos";
+        assert color != null && (color.equals(TINTO) || color.equals(ROSADO) || color.equals(BLANCO)) : "El color debe ser uno de los valores válidos";
+        assert lugarOrigen != null && !lugarOrigen.isEmpty() : "El lugar de origen no puede ser nulo o vacío";
+        assert imagen != null && !imagen.isEmpty() : "La imagen no puede ser nula o vacía";
+    }
 }
