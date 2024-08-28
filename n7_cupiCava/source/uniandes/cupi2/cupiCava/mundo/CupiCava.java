@@ -259,18 +259,6 @@ public class CupiCava
      * La lista de vinos no puede ser nula. <br>
      * La lista de vinos no puede contener elementos nulos.
      */
-    private void verificarInvariante()
-    {
-    assert vinos != null : "La lista de vinos no puede ser nula";
-    for (int i = 0; i < vinos.size(); i++) {
-        Vino v1 = vinos.get(i);
-        for (int j = i + 1; j < vinos.size(); j++) {
-            Vino v2 = vinos.get(j);
-            assert !v1.darNombre().equals(v2.darNombre()) : "No pueden existir dos vinos con el mismo nombre";
-        }
-    }
-
-} // (m)
 
     /**
      * Ordena ascendentemente la lista de vinos por lugar de origen usando el algoritmo de inserción. <br>
