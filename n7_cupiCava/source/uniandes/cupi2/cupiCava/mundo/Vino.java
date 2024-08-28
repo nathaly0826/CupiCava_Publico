@@ -8,7 +8,7 @@
  * Autor: Equipo Cupi2 2020
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
  */
-package uniandes.cupi2.cupiCava.mundo;jkhkjh
+package uniandes.cupi2.cupiCava.mundo;
 
 /**
  * Clase que representa un vino almacenado en la Cupi-Cava.<br>
