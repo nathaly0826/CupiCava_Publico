@@ -13,8 +13,16 @@ package uniandes.cupi2.cupiCava.mundo;
 /**
  * Clase que representa un vino almacenado en la Cupi-Cava.<br>
  * <b>inv: </b> <br>
- * TODO Parte1 PuntoA: Declare la invariante de la clase.
+ * - El nombre del vino no debe ser nulo ni vacío. <br>
+ * - La presentación del vino debe ser "BOTELLA" o "BARRIL". <br>
+ * - El año de elaboración debe ser un valor positivo. <br>
+ * - El contenido de azúcar no debe ser negativo. <br>
+ * - El tipo de vino debe ser uno de los siguientes: "SECO", "ABOCADO", "SEMI_SECO", "SEMI_DULCE" o "DULCE". <br>
+ * - El color del vino debe ser uno de los siguientes: "TINTO", "ROSADO" o "BLANCO". <br>
+ * - El lugar de origen no debe ser nulo ni vacío. <br>
+ * - La ruta de la imagen no debe ser nula ni vacía. <br>
  */
+
 public class Vino
 {
     // -------------------------------------------------------------
@@ -130,7 +138,7 @@ public class Vino
      * @param pTipo Tipo de vino de acuerdo a su contenido en azúcar. pTipo != null && pTipo != "" && (pTipo == SECO || pTipo == ABOCADO || pTipo == SEMI_SECO || pTipo ==
      *        SEMI_DULCE || pTipo == DULCE).
      * @param pColor Color del vino. pColor != null && pColor != "" && (pColor == TINTO || pColor == ROSADO || pColor == BLANCO).
-     * @param pLugarOrigen Lugar de origen del vino. lugarElaboracion != null y lugarElaboracion != "".
+     * @param pLugarOrigen Lugar de origen del vino. pLugarOrigen != null && pLugarOrigen != "".
      * @param pImagen Imagen del vino. pImagen != null && pImagen != "".
      */
     public Vino( String pNombre, String pPresentacion, int pAnhoElaboracion, double pContenidoAzucar, String pTipo, String pColor, String pLugarOrigen, String pImagen )
