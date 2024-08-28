@@ -144,6 +144,8 @@ public class Vino
         lugarOrigen = pLugarOrigen;
         imagen = pImagen;
 
+         verificarInvariante(); // Verificación de la invariante
+
     }
 
     // -------------------------------------------------------------
