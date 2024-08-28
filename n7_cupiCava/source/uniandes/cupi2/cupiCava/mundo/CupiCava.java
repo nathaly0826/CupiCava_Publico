@@ -261,13 +261,16 @@ public class CupiCava
      */
     private void verificarInvariante()
     {
-        assert vinos != null : "La lista de vinos no puede ser nula.";
-        for (Vino vino : vinos)
-        {
-            assert vino != null : "La lista de vinos no puede contener elementos nulos.";
+    assert vinos != null : "La lista de vinos no puede ser nula";
+    for (int i = 0; i < vinos.size(); i++) {
+        Vino v1 = vinos.get(i);
+        for (int j = i + 1; j < vinos.size(); j++) {
+            Vino v2 = vinos.get(j);
+            assert !v1.darNombre().equals(v2.darNombre()) : "No pueden existir dos vinos con el mismo nombre";
         }
     }
-} // 238-270 (m)
+
+} // (m)
 
     /**
      * Ordena ascendentemente la lista de vinos por lugar de origen usando el algoritmo de inserción. <br>
@@ -275,13 +278,41 @@ public class CupiCava
      * <b> post: </b>La lista de vinos está ordenada por lugar de origen (orden ascendente).
      */
     public void ordenarVinosPorLugarOrigen( )
-    {
-   	 // TODO Parte2 PuntoN: Implemente el método según la documentación dada.
-   }
+   {
+    for (int i = 1; i < vinos.size(); i++) {
+        Vino vinoActual = vinos.get(i);
+        int j = i - 1;
+        while (j >= 0 && vinos.get(j).getLugarOrigen().compareToIgnoreCase(vinoActual.getLugarOrigen()) > 0) {
+            vinos.set(j + 1, vinos.get(j));
+            j--;
+        }
+        vinos.set(j + 1, vinoActual);
+    }
+    verificarInvariante();  // Verifica el invariante después de ordenar
+} //(M)
 
-    // -----------------------------------------------------------------
-    // Invariante
-    // -----------------------------------------------------------------
+/**
+ * Verifica la validez de los invariantes de la clase. <br>
+ * <b>inv: </b> <br>
+ * La lista de vinos no puede ser nula. <br>
+ * La lista de vinos no puede contener elementos nulos. <br>
+ * No pueden existir dos vinos con el mismo nombre.
+ */
+private void verificarInvariante()
+{
+    assert vinos != null : "La lista de vinos no puede ser nula";
+    for (Vino vino : vinos) {
+        assert vino != null : "La lista de vinos no puede contener elementos nulos";
+    }
+
+    for (int i = 0; i < vinos.size(); i++) {
+        Vino v1 = vinos.get(i);
+        for (int j = i + 1; j < vinos.size(); j++) {
+            Vino v2 = vinos.get(j);
+            assert !v1.darNombre().equals(v2.darNombre()) : "No pueden existir dos vinos con el mismo nombre";
+        }
+    }
+}
 
     // TODO Parte1 PuntoD: Documente e implemente el método verificarInvariante. Si lo desea puede crear métodos privados en esta parte.
 
